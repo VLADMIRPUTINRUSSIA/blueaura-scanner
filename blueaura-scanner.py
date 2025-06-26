@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Full Advanced Web Security Scanner - Refactored and Enhanced
-My Telegram: ANONX512 MADE BY ANONX512
+My Telegram: t.me/anonx512 MADE BY ANONX512
 This script incorporates advanced features for web application security scanning,
 including a sophisticated Playwright-based crawler, detailed vulnerability reporting,
 numerous scanner modules, authentication handling, and external payload management.
