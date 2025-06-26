@@ -31,7 +31,6 @@ Follow these steps to set up the scanner and its dependencies.
 First, get a copy of the project on your local machine.
 ```bash
 git clone https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git
-If that does not work then try https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner
 cd blueaura-scanner
 ```
 
