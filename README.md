@@ -30,8 +30,9 @@ Follow these steps to set up the scanner and its dependencies.
 **1. Clone the Repository:**
 First, get a copy of the project on your local machine.
 ```bash
-git clone <your-repository-url>
-cd <your-repository-directory>
+git clone https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git
+If that does not work then try https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner
+cd blueaura-scanner
 ```
 
 **2. Install Python Libraries:**
