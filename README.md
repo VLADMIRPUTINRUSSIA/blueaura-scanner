@@ -101,4 +101,23 @@ The final HTML report file (e.g., scan_report_example.com.html) will be present 
 
 If the scan was blocked by a WAF, an incident_report_...html will be generated instead.
 
-Disclaimer: This tool is intended for educational purposes and for authorized security testing only. Do not use it on any system without explicit, written permission from the system's owner. The user assumes all liability.
+**Disclaimer: This tool is intended for educational purposes and for authorized security testing only. Do not use it on any system without explicit, written permission from the system's owner. The user assumes all liability.**
+**The only legitimate reasons to use this tool are for learning or for testing the security of a system you have been given permission to test. It is not for casual use, snooping, or any other activity.**
+## **Disclaimer and Limitation of Liability**
+This tool is intended for educational purposes and for authorized security testing only.
+
+Intended Use
+By using this software, you acknowledge that you are using it exclusively for educational purposes or for security testing on systems for which you have received explicit, written permission from the system's owner. Any other use is strictly prohibited.
+
+No Warranties
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+Assumption of Liability & Indemnification
+THE USER ASSUMES ALL LIABILITY. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This includes, but is not limited to, direct, indirect, incidental, special, exemplary, or consequential damages (including loss of use, data, or profits; or business interruption).
+
+You agree to indemnify and hold harmless the authors from and against any and all claims and expenses, including attorneys' fees, arising out of your use of this software, including but not limited to your violation of any law or regulation or your violation of these terms.
+
+
+
