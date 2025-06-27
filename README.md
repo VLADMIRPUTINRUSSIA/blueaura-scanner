@@ -1,76 +1,102 @@
-# BlueAura-Scanner
-An asynchronous security scanner powered by Python and Playwright for fast, dynamic vulnerability analysis of modern web apps.
-# Advanced Web Security Scanner
+BlueAura Scanner
+Aura: An Asynchronous URL Risk Analyzer.
+UPDATE 2025-06-27T17:53:18Z UTC  2025-06-27T19:53:48+02:00 CEST
 
-This is a powerful, asynchronous web security scanner written in Python. It uses Playwright to perform dynamic, browser-based crawling and analysis, allowing it to test modern web applications that rely heavily on JavaScript.
 
-The scanner is modular and capable of detecting a range of vulnerabilities, including:
--   SQL Injection (Error-based and Time-based)
--   Cross-Site Scripting (XSS) (Reflected and DOM-based)
--   Server-Side Request Forgery (SSRF) via out-of-band detection
--   Insecure Direct Object References (IDOR)
--   Missing Security Headers
--   Open Redirects
--   Sensitive Directory/File Exposure
+An intelligent, asynchronous security scanner powered by Python and Playwright. It is designed for authorized, defensive (Blue Team) security audits of modern web applications.
 
-## Requirements
+Key Features
+Intelligent Launcher (run_scan.py): The primary script for running scans. It automates best practices for stealth and error handling.
 
-To run this scanner, you will need the following:
+Automatic Stealth Mode: The launcher forces the scan to run in a "low and slow" mode (1 request/sec, 45s timeout) to help evade detection by Web Application Firewalls (WAFs).
 
--   **Python 3.7+**
--   A Linux, macOS, or Windows operating system.
--   Access to a command-line terminal.
--   The Python libraries listed in `requirements.txt`.
--   Browser binaries managed by Playwright.
+WAF/Block Detection: Actively monitors the scan for signs of being blocked. If detected, it stops the scan and generates a detailed HTML incident report explaining what happened.
 
-## Installation
+Modular Core Scanner (blueaura-scanner.py): The engine of the tool, capable of testing for SQLi, XSS, IDOR, SSRF, missing security headers, open redirects, and more.
 
-Follow these steps to set up the scanner and its dependencies.
+Fully Configurable: All scan parameters and payloads are controlled via simple config.yml and payloads.yml files.
 
-**1. Clone the Repository:**
-First, get a copy of the project on your local machine.
-```bash
-git clone https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git
+Installation
+1. Clone the Repository
+
+git clone [https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git](https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git)
 cd blueaura-scanner
-```
 
-**2. Install Python Libraries:**
-Install all the necessary Python packages using pip and the `requirements.txt` file.
-```bash
+2. Install Python Libraries
+This command reads the requirements.txt file and automatically installs all necessary Python packages.
+
 pip install -r requirements.txt
-```
 
-**3. Install Playwright Browsers (Crucial Step):**
-This command downloads the browser binaries (like Chromium, Firefox, and WebKit) that Playwright needs to run. The `--with-deps` flag also installs necessary operating system dependencies on Linux.
-```bash
-python -m playwright install --with-deps
-```
+3. Install Playwright Browsers (Crucial Step)
+This command downloads the browser programs (like Chrome) that Playwright needs to run. The --with-deps flag also installs necessary operating system dependencies on Linux.
 
-## Configuration
+python3 -m playwright install --with-deps
 
-The scanner's behavior is controlled by two YAML files:
+How to Use the Scanner
+It is highly recommended to use the run_scan.py launcher for all scans.
 
-1.  **`config.yml`**: This is the main configuration file.
-    -   `target_url`: **(Required)** The starting URL for the scan.
-    -   `modules`: A list of scanner modules to run (e.g., `sqli`, `xss`, `headers`).
-    -   `max_crawl_depth`: How many links deep the crawler should go.
-    -   `max_crawl_urls`: The maximum number of unique pages to scan.
-    -   `auth`: Optional section to configure automated login for scanning authenticated parts of a site.
+Step 1: Configure Your Target
 
-2.  **`payloads.yml`**: This file contains the attack payloads and wordlists used by the scanner modules. You can easily add or modify payloads here without changing the Python code.
+Open the config.yml file.
 
-***Disclaimer:** You should only run this tool against websites for which you have explicit, written permission to perform security testing.*
+Change the target_url to the website you have permission to test.
 
-## Usage
+Enable or disable modules as needed. Note: The launcher will automatically override the speed and timeout settings for stealth.
 
-To start a scan, run the `advanced_scanner.py` script from your terminal, pointing it to your configuration and payload files.
+Step 2: Run the Scan Launcher
 
-```bash
-python advanced_scanner.py --config config.yml --payloads payloads.yml
-```
+Execute the run_scan.py script from your terminal:
 
-**Optional Arguments:**
--   `--output <filename>`: Specify a custom name for the output report file.
--   `--debug`: Run in debug mode, which shows more verbose logging and runs the browser in non-headless mode (with a visible UI).
+python3 run_scan.py --config config.yml --payloads payloads.yml
 
-Once the scan is complete, a detailed HTML report will be generated in the same directory (e.g., `scan_report_example.com.html`).
+The launcher will display warnings, apply stealth settings, and then start the main scanner process. You will see the live output from the scanner in your terminal.
+
+Running Long Scans (The Professional Way)
+Scanning large websites can take several hours. If you run a long scan in a normal terminal (like Google Cloud Shell), it will be terminated if you close the tab or lose your internet connection.
+
+The correct way to run a long scan is by using a terminal multiplexer like screen. This creates a persistent session on the server that keeps running in the background, even if you disconnect.
+
+Tutorial: Using screen for Persistent Scans
+Step 1: Start a screen Session
+From your blueaura-scanner directory, start a new session and give it a memorable name.
+
+screen -S scanner
+
+Your terminal will clear, and you will now be inside the persistent screen session.
+
+Step 2: Run the Launcher Inside screen
+Start the launcher as you normally would. The scan is now running inside the protected session.
+
+python3 run_scan.py --config config.yml --payloads payloads.yml
+
+Step 3: Detach and Leave the Scan Running
+You can now safely "detach" from the session without stopping the scan. Press this key combination:
+Ctrl+A, then release, then press D.
+
+You will see a [detached] message. The scan is now running in the background, and you can close your terminal or shut down your computer.
+
+How to Check Progress and Get Results
+Step 1: Check if the Scan is Still Running
+At any time, you can list your active sessions to see if the scanner is still working:
+
+screen -ls
+
+If you see a session named scanner, it's still running.
+
+Step 2: Reconnect to the Live Session
+To jump back into the session and see the live log output, use this command:
+
+screen -r scanner
+
+You will be reconnected to your scan exactly where you left off. (To detach again, use Ctrl+A then D).
+
+Step 3: Know When the Results are Ready
+The scan is finished when the script completes. You'll know because:
+
+The screen session will no longer appear when you run screen -ls.
+
+The final HTML report file (e.g., scan_report_example.com.html) will be present in your directory. Check for it with ls -l.
+
+If the scan was blocked by a WAF, an incident_report_...html will be generated instead.
+
+Disclaimer: This tool is intended for educational purposes and for authorized security testing only. Do not use it on any system without explicit, written permission from the system's owner. The user assumes all liability.
