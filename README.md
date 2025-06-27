@@ -1,7 +1,8 @@
-BlueAura Scanner
-Aura: An Asynchronous URL Risk Analyzer.
-UPDATE 2025-06-27T17:53:18Z UTC  2025-06-27T19:53:48+02:00 CEST
+# **BlueAura Scanner**
 
+### **Aura: An Asynchronous URL Risk Analyzer.**
+
+**UPDATE** `2025-06-27T17:53:18Z` UTC `2025-06-27T19:53:48+02:00` CEST
 
 An intelligent, asynchronous security scanner powered by Python and Playwright. It is designed for authorized, defensive (Blue Team) security audits of modern web applications.
 
