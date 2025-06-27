@@ -21,6 +21,7 @@ Installation
 1. Clone the Repository
 
 git clone [https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git](https://github.com/VLADMIRPUTINRUSSIA/blueaura-scanner.git)
+
 cd blueaura-scanner
 
 2. Install Python Libraries
